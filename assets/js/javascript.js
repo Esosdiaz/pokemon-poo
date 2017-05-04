@@ -12,19 +12,19 @@ function Pokemon(nombre, color, poderDeAtaque){
 		this.nivelDeAmistad = this.nivelDeAmistad + valor;
 	}
 	this.atacar = function(pokemon){
-		pokemon.vida = pokemon.vida - this.poderDeAtaque
+		pokemon.vida = pokemon.vida - this.poderDeAtaque;
+		var pelea = document.getElementById("pelea")
+		pelea.innerHTML = this.nombre + " atacó a " + pokemon.nombre + " y este ahora tiene " + pokemon.vida + " vida restante.";
 	}
 }
 
-const Pikachu = new Pokemon ("Pikachu", "amarillo", 100);
-Pikachu.mostrarPokemon();
-const Charmander = new Pokemon ("Charmander", "rojo", 20);
-Charmander.mostrarPokemon();
-const Squartle = new Pokemon ("Squartle", "celeste", 40);
-Squartle.mostrarPokemon();
-const Bulbasour = new Pokemon ("Bulbasour", "verde", 120);
-Bulbasour.mostrarPokemon();
+function pelear(){
+	var pokemon1 = document.getElementById("pokemon1").value;
+	var pokemon2 = document.getElementById("pokemon2").value;
+	var numRandom = Math.floor((Math.random() * 100) + 1);
+	var atacante = new Pokemon(pokemon1, "amarillo", numRandom);
+	var atacado = new Pokemon(pokemon2, "rojo", numRandom);
+	atacante.atacar(atacado); 
 
-Pikachu.atacar(Charmander);
-console.log(Charmander.vida);
+}
 
